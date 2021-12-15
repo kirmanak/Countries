@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
 import timber.log.Timber
 import javax.inject.Singleton
@@ -14,11 +15,12 @@ import javax.inject.Singleton
 object RetrofitModule {
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient, converterFactory: Converter.Factory): Retrofit {
         Timber.v("provideRetrofit() called with: okHttpClient = $okHttpClient")
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl("https://restcountries.com/")
+            .addConverterFactory(converterFactory)
             .build()
     }
 }
