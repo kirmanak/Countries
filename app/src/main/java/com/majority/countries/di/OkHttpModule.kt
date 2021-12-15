@@ -1,4 +1,4 @@
-package com.majority.countries.data
+package com.majority.countries.di
 
 import com.majority.countries.BuildConfig
 import dagger.Module
