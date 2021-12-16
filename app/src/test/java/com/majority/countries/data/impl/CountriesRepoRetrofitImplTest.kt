@@ -34,6 +34,16 @@ class CountriesRepoRetrofitImplTest : BaseTest() {
         mockWebServer.alwaysRespondWith(MockResponse().setResponseCode(404))
         runBlocking { subject.getAllCountries() }
     }
+
+    @Test
+    fun `when countries requested then path is correct`() {
+        mockWebServer.alwaysRespondWith(testSuccessfulGetAllResponse())
+        runBlocking { subject.getAllCountries() }
+        assertEquals(
+            "/v3.1/all?fields=name%2Cindependent%2Cstatus%2CunMember%2Ccurrencies%2Ccapital%2Cpopulation%2Cflags%2Cregion%2Csubregion%2Clanguages%2CstartOfWeek",
+            mockWebServer.takeRequest().path
+        )
+    }
 }
 
 fun MockWebServer.alwaysRespondWith(mockResponse: MockResponse) {

@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface RestCountriesApi {
     @GET("/v3.1/all")
     suspend fun getAll(
-        @Query("fields") vararg fields: String,
+        @Query("fields") fields: String,
     ): List<CountryModel>
 }

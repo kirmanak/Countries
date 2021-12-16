@@ -14,7 +14,7 @@ class CountriesRepoRetrofitImpl @Inject constructor(
 
     override suspend fun getAllCountries(): List<CountryData> {
         Timber.v("getAllCountries() called")
-        val response = api.getAll(*FIELDS)
+        val response = api.getAll(FIELDS.joinToString(","))
         Timber.d("getAllCountries: received $response")
         return response.map { model ->
             val nativeOfficialNames = mutableMapOf<String, String>()
