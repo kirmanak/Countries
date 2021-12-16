@@ -10,10 +10,10 @@ data class CountryModel(
     val independent: Boolean? = null,
     val unMember: Boolean? = null,
     val status: String? = null,
-    val currencies: CurrencyModel,
+    val currencies: Map<String, CurrencyInfoModel>,
     val capital: List<String> = emptyList(),
     val region: String? = null,
     val subregion: String? = null,
-    val languages: LanguagesModel,
+    val languages: Map<String, String>,
     val population: Long? = null,
 )

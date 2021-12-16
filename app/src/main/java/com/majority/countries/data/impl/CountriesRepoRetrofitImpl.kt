@@ -35,7 +35,7 @@ class CountriesRepoRetrofitImpl @Inject constructor(
                 capital = model.capital,
                 region = model.region,
                 subregion = model.subregion,
-                languages = model.languages.languageToName,
+                languages = model.languages,
                 population = model.population,
             )
         }
@@ -45,14 +45,14 @@ class CountriesRepoRetrofitImpl @Inject constructor(
         nativeCommonNames: MutableMap<String, String>,
         nativeOfficialNames: MutableMap<String, String>
     ) {
-        name.nativeName.languagesToNames.forEach { entry ->
+        name.nativeName.forEach { entry ->
             entry.value.common?.let { nativeCommonNames[entry.key] = it }
             entry.value.official?.let { nativeOfficialNames[entry.key] = it }
         }
     }
 
     private fun CountryModel.parseCurrencies(): List<CurrencyData> =
-        currencies.currencyNameToInfo.mapNotNull {
+        currencies.mapNotNull {
             val symbol = it.value.symbol ?: return@mapNotNull null
             val name = it.value.name ?: return@mapNotNull null
             CurrencyData(it.key, name, symbol)
@@ -63,7 +63,7 @@ class CountriesRepoRetrofitImpl @Inject constructor(
             "name",
             "independent",
             "status",
-            "unmember",
+            "unMember",
             "currencies",
             "capital",
             "population",

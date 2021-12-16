@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class NameModel(
     val common: String? = null,
     val official: String? = null,
-    val nativeName: NativeNameModel,
+    val nativeName: Map<String, NativeNameLanguageModel>,
 )
