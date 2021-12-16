@@ -13,16 +13,13 @@ fun testSuccessfulGetAllResponse() = MockResponse()
             [
     {
         "flags": {
-            "png": "https://flagcdn.com/w320/mt.png",
-            "svg": "https://flagcdn.com/mt.svg"
+            "png": "https://flagcdn.com/w320/mt.png"
         },
         "startOfWeek": "monday",
         "name": {
-            "common": "Malta",
             "official": "Republic of Malta",
             "nativeName": {
                 "eng": {
-                    "official": "Republic of Malta",
                     "common": "Malta"
                 },
                 "mlt": {
@@ -33,16 +30,12 @@ fun testSuccessfulGetAllResponse() = MockResponse()
         },
         "independent": true,
         "status": "officially-assigned",
-        "unMember": true,
         "currencies": {
             "EUR": {
                 "name": "Euro",
                 "symbol": "€"
             }
         },
-        "capital": [
-            "Valletta"
-        ],
         "region": "Europe",
         "subregion": "Southern Europe",
         "languages": {
@@ -120,17 +113,17 @@ fun testSuccessfulGetAllResponse() = MockResponse()
             "fra": "French"
         },
         "population": 271960
-    } ] """.trimIndent()
+    },
+    {} ] """.trimIndent()
     )
 
 fun testSuccessfulCountriesData() = listOf(
     CountryData(
-        svgFlag = "https://flagcdn.com/mt.svg",
+        svgFlag = null,
         startOfWeek = "monday",
-        commonName = "Malta",
+        commonName = null,
         officialName = "Republic of Malta",
         nativeOfficialNames = mapOf(
-            "eng" to "Republic of Malta",
             "mlt" to "Repubblika ta ' Malta",
         ),
         nativeCommonNames = mapOf(
@@ -138,10 +131,10 @@ fun testSuccessfulCountriesData() = listOf(
             "mlt" to "Malta",
         ),
         independent = true,
-        unMember = true,
+        unMember = null,
         status = "officially-assigned",
         currencies = listOf(CurrencyData("EUR", "Euro", "€")),
-        capital = listOf("Valletta"),
+        capital = emptyList(),
         region = "Europe",
         subregion = "Southern Europe",
         languages = mapOf(
@@ -184,4 +177,21 @@ fun testSuccessfulCountriesData() = listOf(
         languages = mapOf("fra" to "French"),
         population = 271960,
     ),
+    CountryData(
+        svgFlag = null,
+        startOfWeek = null,
+        commonName = null,
+        officialName = null,
+        nativeOfficialNames = emptyMap(),
+        nativeCommonNames = emptyMap(),
+        independent = null,
+        unMember = null,
+        status = null,
+        currencies = emptyList(),
+        capital = emptyList(),
+        region = null,
+        subregion = null,
+        languages = emptyMap(),
+        population = null,
+    )
 )
