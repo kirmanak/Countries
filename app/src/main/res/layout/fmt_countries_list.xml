@@ -14,7 +14,6 @@
 		app:layoutManager="LinearLayoutManager"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:spanCount="@integer/countries_list_span_count"
 		tools:listitem="@layout/vh_country"
 		app:layout_constraintTop_toTopOf="parent" />
 
