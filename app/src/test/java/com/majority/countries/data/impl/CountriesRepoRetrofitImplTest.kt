@@ -1,6 +1,7 @@
 package com.majority.countries.data.impl
 
 import com.majority.countries.BaseTest
+import com.majority.countries.data.CountryData
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher
@@ -55,7 +56,7 @@ class CountriesRepoRetrofitImplTest : BaseTest() {
 
     @Test(expected = HttpException::class)
     fun `when search isn't successful then throws error`() {
-        mockWebServer.alwaysRespondWith(MockResponse().setResponseCode(404))
+        mockWebServer.alwaysRespondWith(MockResponse().setResponseCode(503))
         runBlocking { subject.searchByCountryName("Sweden") }
     }
 
@@ -68,6 +69,13 @@ class CountriesRepoRetrofitImplTest : BaseTest() {
             "/v3.1/name/Sweden?fields=name%2Cindependent%2Cstatus%2CunMember%2Ccurrencies%2Ccapital%2Cpopulation%2Cflags%2Cregion%2Csubregion%2Clanguages%2CstartOfWeek",
             mockWebServer.takeRequest().path
         )
+    }
+
+    @Test
+    fun `when country not found by name then returns empty list`() {
+        mockWebServer.alwaysRespondWith(testCountryNotFoundByName())
+        val actual = runBlocking { subject.searchByCountryName("Sweden") }
+        assertEquals(emptyList<List<CountryData>>(), actual)
     }
 }
 

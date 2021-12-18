@@ -291,3 +291,15 @@ fun testSuccessfulCountryListItems() = listOf(
         )
     )
 )
+
+@Language("JSON")
+fun testCountryNotFoundByName() = MockResponse()
+    .setResponseCode(404)
+    .setBody(
+        """
+            {
+            	"status": 404,
+            	"message": "Not Found"
+            }
+        """.trimIndent()
+    )

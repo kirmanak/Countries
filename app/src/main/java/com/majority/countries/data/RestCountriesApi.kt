@@ -1,6 +1,7 @@
 package com.majority.countries.data
 
 import com.majority.countries.data.models.CountryModel
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -15,5 +16,5 @@ interface RestCountriesApi {
     suspend fun getByName(
         @Path("name") name: String,
         @Query("fields") fields: String,
-    ): List<CountryModel>
+    ): Response<List<CountryModel>>
 }

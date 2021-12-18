@@ -5,6 +5,7 @@ import com.majority.countries.data.CountryData
 import com.majority.countries.data.CurrencyData
 import com.majority.countries.data.RestCountriesApi
 import com.majority.countries.data.models.CountryModel
+import retrofit2.HttpException
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -19,7 +20,22 @@ class CountriesRepoRetrofitImpl @Inject constructor(
 
     override suspend fun searchByCountryName(name: String): List<CountryData> {
         Timber.v("searchByCountryName() called with: name = $name")
-        return mapCountryInfo(api.getByName(name, FIELDS))
+        val response = api.getByName(name, FIELDS)
+        return when {
+            response.isSuccessful -> {
+                Timber.d("searchByCountryName: response is successful")
+                val body = checkNotNull(response.body()) { "Response successful but body is null" }
+                mapCountryInfo(body)
+            }
+            response.code() == 404 -> {
+                Timber.w("searchByCountryName: 404 is received, returning empty list")
+                emptyList()
+            }
+            else -> {
+                Timber.w("searchByCountryName: received unsuccessful response but not 404")
+                throw HttpException(response)
+            }
+        }
     }
 
     private fun mapCountryInfo(response: List<CountryModel>): List<CountryData> {
