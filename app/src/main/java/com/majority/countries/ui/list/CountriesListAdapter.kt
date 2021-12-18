@@ -26,7 +26,6 @@ class CountriesListAdapter @Inject constructor(
     }
 
     override fun onBindViewHolder(holder: CountryListItemHolder, position: Int) {
-        Timber.v("onBindViewHolder() called with: holder = $holder, position = $position")
         getItem(position)?.let { holder.bind(it) }
     }
 }

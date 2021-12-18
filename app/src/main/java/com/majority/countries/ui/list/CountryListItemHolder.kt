@@ -17,7 +17,6 @@ class CountryListItemHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: CountryListItem) = with(binding) {
-        Timber.v("bind() called with $item")
         capital.text = item.capital
         name.text = item.name
         imageLoader.loadImage(flag, item.pngFlag)
