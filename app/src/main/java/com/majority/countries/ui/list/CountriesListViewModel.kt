@@ -63,4 +63,27 @@ class CountriesListViewModel @Inject constructor(
             }
         }
     }
+
+    fun sortByPopulation() {
+        Timber.v("sortByPopulation() called")
+        sortBy(true) { it.population }
+    }
+
+    fun sortByName() {
+        Timber.v("sortByName() called")
+        sortBy(false) { it.name }
+    }
+
+    private inline fun <T : Comparable<T>> sortBy(
+        descending: Boolean,
+        crossinline block: (CountryListItem) -> T
+    ) {
+        Timber.v("sortBy() called with: descending = $descending")
+        val currentValue = mutableUiState.value
+        if (currentValue !is UiState.Content) return
+        mutableUiState.value = UiState.Loading()
+        val list = currentValue.data
+        val sorted = if (descending) list.sortedByDescending(block) else list.sortedBy(block)
+        mutableUiState.value = UiState.Content(sorted)
+    }
 }

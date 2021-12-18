@@ -201,6 +201,188 @@ fun testSuccessfulCountriesData() = listOf(
     )
 )
 
+fun testSuccessfulCountriesDataByName() = listOf(
+    CountryListItem(
+        CountryData(
+            pngFlag = null,
+            svgFlag = null,
+            startOfWeek = null,
+            commonName = null,
+            officialName = null,
+            nativeOfficialNames = emptyMap(),
+            nativeCommonNames = emptyMap(),
+            independent = null,
+            unMember = null,
+            status = null,
+            currencies = emptyList(),
+            capitals = emptyList(),
+            region = null,
+            subregion = null,
+            languages = emptyMap(),
+            population = null,
+        )
+    ),
+    CountryListItem(
+        CountryData(
+            pngFlag = "https://flagcdn.com/w320/nc.png",
+            svgFlag = "https://flagcdn.com/nc.svg",
+            startOfWeek = "monday",
+            commonName = "New Caledonia",
+            officialName = "New Caledonia",
+            nativeOfficialNames = mapOf("fra" to "Nouvelle-Calédonie"),
+            nativeCommonNames = mapOf("fra" to "Nouvelle-Calédonie"),
+            independent = false,
+            unMember = false,
+            status = "officially-assigned",
+            currencies = listOf(CurrencyData("XPF", "CFP franc", "₣")),
+            capitals = listOf("Nouméa"),
+            region = "Oceania",
+            subregion = "Melanesia",
+            languages = mapOf("fra" to "French"),
+            population = 271960,
+        )
+    ),
+    CountryListItem(
+        CountryData(
+            pngFlag = "https://flagcdn.com/w320/mt.png",
+            svgFlag = null,
+            startOfWeek = "monday",
+            commonName = null,
+            officialName = "Republic of Malta",
+            nativeOfficialNames = mapOf(
+                "mlt" to "Repubblika ta ' Malta",
+            ),
+            nativeCommonNames = mapOf(
+                "eng" to "Malta",
+                "mlt" to "Malta",
+            ),
+            independent = true,
+            unMember = null,
+            status = "officially-assigned",
+            currencies = listOf(CurrencyData("EUR", "Euro", "€")),
+            capitals = emptyList(),
+            region = "Europe",
+            subregion = "Southern Europe",
+            languages = mapOf(
+                "eng" to "English",
+                "mlt" to "Maltese",
+            ),
+            population = 525285,
+        )
+    ),
+    CountryListItem(
+        CountryData(
+            pngFlag = "https://flagcdn.com/w320/se.png",
+            svgFlag = "https://flagcdn.com/se.svg",
+            startOfWeek = "monday",
+            commonName = "Sweden",
+            officialName = "Kingdom of Sweden",
+            nativeOfficialNames = mapOf("swe" to "Konungariket Sverige"),
+            nativeCommonNames = mapOf("swe" to "Sverige"),
+            independent = true,
+            unMember = true,
+            status = "officially-assigned",
+            currencies = listOf(CurrencyData("SEK", "Swedish krona", "kr")),
+            capitals = listOf("Stockholm"),
+            region = "Europe",
+            subregion = "Northern Europe",
+            languages = mapOf("swe" to "Swedish"),
+            population = 10353442,
+        )
+    ),
+)
+
+fun testSuccessfulCountriesDataByPopulation() = listOf(
+    CountryListItem(
+        CountryData(
+            pngFlag = "https://flagcdn.com/w320/se.png",
+            svgFlag = "https://flagcdn.com/se.svg",
+            startOfWeek = "monday",
+            commonName = "Sweden",
+            officialName = "Kingdom of Sweden",
+            nativeOfficialNames = mapOf("swe" to "Konungariket Sverige"),
+            nativeCommonNames = mapOf("swe" to "Sverige"),
+            independent = true,
+            unMember = true,
+            status = "officially-assigned",
+            currencies = listOf(CurrencyData("SEK", "Swedish krona", "kr")),
+            capitals = listOf("Stockholm"),
+            region = "Europe",
+            subregion = "Northern Europe",
+            languages = mapOf("swe" to "Swedish"),
+            population = 10353442,
+        )
+    ),
+    CountryListItem(
+        CountryData(
+            pngFlag = "https://flagcdn.com/w320/mt.png",
+            svgFlag = null,
+            startOfWeek = "monday",
+            commonName = null,
+            officialName = "Republic of Malta",
+            nativeOfficialNames = mapOf(
+                "mlt" to "Repubblika ta ' Malta",
+            ),
+            nativeCommonNames = mapOf(
+                "eng" to "Malta",
+                "mlt" to "Malta",
+            ),
+            independent = true,
+            unMember = null,
+            status = "officially-assigned",
+            currencies = listOf(CurrencyData("EUR", "Euro", "€")),
+            capitals = emptyList(),
+            region = "Europe",
+            subregion = "Southern Europe",
+            languages = mapOf(
+                "eng" to "English",
+                "mlt" to "Maltese",
+            ),
+            population = 525285,
+        )
+    ),
+    CountryListItem(
+        CountryData(
+            pngFlag = "https://flagcdn.com/w320/nc.png",
+            svgFlag = "https://flagcdn.com/nc.svg",
+            startOfWeek = "monday",
+            commonName = "New Caledonia",
+            officialName = "New Caledonia",
+            nativeOfficialNames = mapOf("fra" to "Nouvelle-Calédonie"),
+            nativeCommonNames = mapOf("fra" to "Nouvelle-Calédonie"),
+            independent = false,
+            unMember = false,
+            status = "officially-assigned",
+            currencies = listOf(CurrencyData("XPF", "CFP franc", "₣")),
+            capitals = listOf("Nouméa"),
+            region = "Oceania",
+            subregion = "Melanesia",
+            languages = mapOf("fra" to "French"),
+            population = 271960,
+        )
+    ),
+    CountryListItem(
+        CountryData(
+            pngFlag = null,
+            svgFlag = null,
+            startOfWeek = null,
+            commonName = null,
+            officialName = null,
+            nativeOfficialNames = emptyMap(),
+            nativeCommonNames = emptyMap(),
+            independent = null,
+            unMember = null,
+            status = null,
+            currencies = emptyList(),
+            capitals = emptyList(),
+            region = null,
+            subregion = null,
+            languages = emptyMap(),
+            population = null,
+        )
+    )
+)
+
 fun testSuccessfulCountryListItems() = listOf(
     CountryListItem(
         CountryData(

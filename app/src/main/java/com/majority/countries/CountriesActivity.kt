@@ -3,6 +3,7 @@ package com.majority.countries
 import android.app.SearchManager
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,21 @@ class CountriesActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_countries, menu)
         setupSearchView(menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Timber.v("onOptionsItemSelected() called with: item = $item")
+        return when (item.itemId) {
+            R.id.sort_by_name -> {
+                countriesListViewModel.sortByName()
+                true
+            }
+            R.id.sort_by_population -> {
+                countriesListViewModel.sortByPopulation()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupSearchView(menu: Menu?) {

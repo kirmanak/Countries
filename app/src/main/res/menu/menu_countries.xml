@@ -8,4 +8,13 @@
 		android:title="@string/menu_search"
 		app:actionViewClass="android.widget.SearchView"
 		app:showAsAction="ifRoom" />
+	<item
+		android:id="@+id/sort_by_name"
+		android:title="@string/menu_sort_by_name"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/sort_by_population"
+		android:title="@string/menu_sort_by_population"
+		app:showAsAction="never" />
 </menu>

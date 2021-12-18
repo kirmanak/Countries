@@ -3,6 +3,8 @@ package com.majority.countries.ui.list
 import com.majority.countries.BaseTest
 import com.majority.countries.data.CountriesRepo
 import com.majority.countries.data.impl.testSuccessfulCountriesData
+import com.majority.countries.data.impl.testSuccessfulCountriesDataByName
+import com.majority.countries.data.impl.testSuccessfulCountriesDataByPopulation
 import com.majority.countries.data.impl.testSuccessfulCountryListItems
 import com.majority.countries.di.DataModule
 import com.majority.countries.ui.UiState
@@ -94,6 +96,24 @@ class CountriesListViewModelTest : BaseTest() {
             countriesRepo.searchByCountryName(secondName)
         }
         confirmVerified(countriesRepo)
+    }
+
+    @Test
+    fun `when sort by name then sorts properly`() {
+        coEvery { countriesRepo.getAllCountries() } returns testSuccessfulCountriesData()
+        val subject = buildCountriesListViewModel()
+        subject.sortByName()
+        val actual = subject.uiState.value
+        assertEquals(UiState.Content(testSuccessfulCountriesDataByName()), actual)
+    }
+
+    @Test
+    fun `when sort by population then sorts properly`() {
+        coEvery { countriesRepo.getAllCountries() } returns testSuccessfulCountriesData()
+        val subject = buildCountriesListViewModel()
+        subject.sortByPopulation()
+        val actual = subject.uiState.value
+        assertEquals(UiState.Content(testSuccessfulCountriesDataByPopulation()), actual)
     }
 
     private fun buildCountriesListViewModel() = CountriesListViewModel(countriesRepo)
