@@ -16,7 +16,7 @@ data class CountryData(
     val unMember: Boolean?,
     val status: String?,
     val currencies: List<CurrencyData>,
-    val capital: List<String>,
+    val capitals: List<String>,
     val region: String?,
     val subregion: String?,
     val languages: Map<String, String>,

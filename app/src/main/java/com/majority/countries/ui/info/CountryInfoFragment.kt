@@ -11,6 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.majority.countries.R
 import com.majority.countries.data.CountryData
 import com.majority.countries.databinding.FmtCountryInfoBinding
+import com.majority.countries.databinding.ViewCountryInfoTextBinding
 import com.majority.countries.ui.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -43,29 +44,57 @@ class CountryInfoFragment : BottomSheetDialogFragment() {
 
     private fun FmtCountryInfoBinding.setUpViews(country: CountryData) {
         Timber.v("setUpViews() called with: country = $country")
+        imageLoader.loadImage(flag, country.pngFlag)
         name.text = country.officialName ?: country.commonName
         name.isVisible = name.text.isNotEmpty()
 
-        capital.isVisible = country.capital.isNotEmpty()
-        capital.text = resources.getQuantityString(
-            R.plurals.fmt_country_info_capital,
-            country.capital.size,
-            country.capital.joinToString()
-        )
+        val texts: MutableList<String> = ArrayList()
 
-        val regionInfo = listOf(country.subregion, country.region).filterNot { it.isNullOrBlank() }
-        region.isVisible = regionInfo.isNotEmpty()
-        region.text = resources.getString(
-            R.string.fmt_country_info_region, regionInfo.joinToString()
-        )
-
-        population.isVisible = country.population != null
-        country.population?.let {
-            population.text = getString(
-                R.string.fmt_country_info_population, numberFormat.format(it)
+        country.capitals.filterNot { it.isBlank() }.takeIf { it.isNotEmpty() }?.let {
+            val capital = resources.getQuantityString(
+                R.plurals.fmt_country_info_capital, it.size, it.joinToString()
             )
+            texts.add(capital)
         }
 
-        imageLoader.loadImage(flag, country.pngFlag)
+        val regions = listOf(country.subregion, country.region)
+        regions.filterNot { it.isNullOrBlank() }.takeIf { it.isNotEmpty() }?.let {
+            texts.add(resources.getString(R.string.fmt_country_info_region, it.joinToString()))
+        }
+
+        country.population?.let {
+            texts.add(getString(R.string.fmt_country_info_population, numberFormat.format(it)))
+        }
+
+        country.independent?.let {
+            val string =
+                if (it) R.string.fmt_country_info_boolean_yes else R.string.fmt_country_info_boolean_no
+            texts.add(getString(R.string.fmt_country_info_independent, getString(string)))
+        }
+
+        country.startOfWeek?.let {
+            texts.add(getString(R.string.fmt_country_info_start_week, it))
+        }
+
+        country.unMember?.let {
+            val string =
+                if (it) R.string.fmt_country_info_boolean_yes else R.string.fmt_country_info_boolean_no
+            texts.add(getString(R.string.fmt_country_info_un_member, getString(string)))
+        }
+
+        country.currencies
+            .takeUnless { it.isEmpty() }
+            ?.map { getString(R.string.fmt_country_info_currency, it.code, it.name, it.symbol) }
+            ?.let { texts.add(getString(R.string.fmt_country_info_currencies, it.joinToString())) }
+
+        Timber.d("setUpViews: created list of texts: $texts")
+        for (content in texts) {
+            ViewCountryInfoTextBinding.inflate(layoutInflater, infoHolder, false).root.apply {
+                text = content
+                id = View.generateViewId()
+                infoHolder.addView(this)
+                textsFlow.addView(this)
+            }
+        }
     }
 }

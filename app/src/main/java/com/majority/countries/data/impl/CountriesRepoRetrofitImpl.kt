@@ -57,7 +57,7 @@ class CountriesRepoRetrofitImpl @Inject constructor(
                 unMember = model.unMember,
                 status = model.status,
                 currencies = model.parseCurrencies(),
-                capital = model.capital,
+                capitals = model.capital,
                 region = model.region,
                 subregion = model.subregion,
                 languages = model.languages,

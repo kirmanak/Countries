@@ -7,5 +7,5 @@ data class CountryListItem(
 ) {
     val pngFlag: String? get() = countryData.pngFlag
     val name: String? get() = countryData.commonName ?: countryData.officialName
-    val capital: String get() = countryData.capital.joinToString(separator = ",")
+    val capital: String get() = countryData.capitals.joinToString(separator = ",")
 }

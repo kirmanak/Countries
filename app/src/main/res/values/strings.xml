@@ -7,4 +7,11 @@
 	<string name="fmt_country_info_population">Population: %s</string>
 	<string name="menu_search">Search</string>
 	<string name="searchable_hint_countries_name">Search country by name</string>
+	<string name="fmt_country_info_independent">Independent: %s</string>
+	<string name="fmt_country_info_boolean_yes">Yes</string>
+	<string name="fmt_country_info_boolean_no">Yes</string>
+	<string name="fmt_country_info_start_week">Week starts on: %s</string>
+	<string name="fmt_country_info_un_member">UN  member: %s</string>
+	<string name="fmt_country_info_currencies">Currencies: %s</string>
+	<string name="fmt_country_info_currency">%s (%s, %s)</string>
 </resources>
