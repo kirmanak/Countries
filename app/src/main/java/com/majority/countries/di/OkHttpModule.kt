@@ -57,7 +57,7 @@ object OkHttpModule {
             val available = blockCount * blockSize
             // Target 2% of the total space.
             available / 50
-        } catch (e: IllegalArgumentException) {
+        } catch (e: Throwable) {
             Timber.e(e, "calculateDiskCacheSize: can't calculate disk size")
             minSize
         }

@@ -1,5 +1,9 @@
 package com.majority.countries.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class CountryData(
     val pngFlag: String?,
     val svgFlag: String?,
@@ -17,10 +21,11 @@ data class CountryData(
     val subregion: String?,
     val languages: Map<String, String>,
     val population: Long?,
-)
+) : Parcelable
 
+@Parcelize
 data class CurrencyData(
     val code: String,
     val name: String,
     val symbol: String,
-)
+) : Parcelable

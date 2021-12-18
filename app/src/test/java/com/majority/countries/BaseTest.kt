@@ -4,6 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
+import io.mockk.MockKAnnotations
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Rule
@@ -20,8 +21,9 @@ abstract class BaseTest {
     var hiltRule = HiltAndroidRule(this)
 
     @Before
-    fun setUpHilt() {
+    open fun setUp() {
         hiltRule.inject()
+        MockKAnnotations.init(this)
     }
 
     companion object {

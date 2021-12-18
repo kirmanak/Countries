@@ -9,5 +9,18 @@
 		android:id="@+id/countriesListFragment"
 		android:name="com.majority.countries.ui.list.CountriesListFragment"
 		android:label="fmt_countries_list"
-		tools:layout="@layout/fmt_countries_list" />
+		tools:layout="@layout/fmt_countries_list">
+		<action
+			android:id="@+id/toCountryInfo"
+			app:destination="@id/countryInfoFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/countryInfoFragment"
+		android:name="com.majority.countries.ui.info.CountryInfoFragment"
+		android:label="fmt_country_info"
+		tools:layout="@layout/fmt_country_info">
+		<argument
+			android:name="country"
+			app:argType="com.majority.countries.data.CountryData" />
+	</fragment>
 </navigation>
