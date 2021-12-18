@@ -55,13 +55,16 @@ class CountriesListFragment : Fragment(R.layout.fmt_countries_list) {
 
         viewModel.uiState.observe(viewLifecycleOwner) {
             Timber.d("setUpViews: new ui state is $it")
-            with(progress) {
-                isVisible = it is UiState.Loading
-                if (it is UiState.Loading) show() else hide()
+            if (it is UiState.Loading) {
+                progress.isVisible = true
+                progress.show()
             }
 
             errorViews.isVisible = it is UiState.Error
-            if (it is UiState.Error) error.text = it.throwable.message
+            if (it is UiState.Error) {
+                error.text = it.throwable.message
+                progress.hide()
+            }
 
             list.isVisible = it is UiState.Content || it is UiState.Loading
             if (it is UiState.Content) adapter.submitList(it.data) { progress.hide() }
