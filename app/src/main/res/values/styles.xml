@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<style name="VhCountryFlagShape">
+		<item name="cornerSizeTopLeft">@dimen/corner_radius_regular</item>
+		<item name="cornerSizeBottomLeft">@dimen/corner_radius_regular</item>
+	</style>
 </resources>

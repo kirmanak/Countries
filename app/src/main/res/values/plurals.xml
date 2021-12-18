@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<plurals name="fmt_country_info_capital">
+		<item quantity="one">Capital: %s</item>
+		<item quantity="other">Capitals: %s</item>
+	</plurals>
+</resources>

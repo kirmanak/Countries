@@ -5,30 +5,31 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_margin="@dimen/margin_small"
-	app:cardCornerRadius="10dp"
+	app:cardCornerRadius="@dimen/corner_radius_regular"
 	app:cardElevation="10dp">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:padding="@dimen/padding_small">
+		android:layout_height="wrap_content">
 
-		<ImageView
+		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/flag"
-			android:layout_width="135dp"
-			android:layout_height="90dp"
-			android:contentDescription="@string/vh_country_flag_description"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:adjustViewBounds="true"
+			android:contentDescription="@string/content_description_country_flag"
+			app:shapeAppearance="@style/VhCountryFlagShape"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			tools:src="@tools:sample/avatars" />
+			tools:src="@tools:sample/backgrounds/scenic" />
 
 		<androidx.constraintlayout.widget.Guideline
 			android:id="@+id/text_start"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:orientation="vertical"
-			app:layout_constraintGuide_begin="143dp" />
+			app:layout_constraintGuide_begin="158dp" />
 
 		<TextView
 			android:id="@+id/name"
@@ -37,24 +38,12 @@
 			android:ellipsize="end"
 			android:maxLines="1"
 			android:textAppearance="@style/TextAppearance.AppCompat.Title"
-			app:layout_constraintBottom_toTopOf="@+id/currency"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@+id/text_start"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:text="@tools:sample/lorem/random" />
-
-		<TextView
-			android:id="@+id/currency"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:ellipsize="end"
-			android:maxWidth="200dp"
-			android:maxLines="1"
-			android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+			android:layout_marginTop="@dimen/margin_small"
 			app:layout_constraintBottom_toTopOf="@+id/capital"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintVertical_chainStyle="spread_inside"
 			app:layout_constraintStart_toEndOf="@+id/text_start"
-			app:layout_constraintTop_toBottomOf="@+id/name"
+			app:layout_constraintTop_toTopOf="parent"
 			tools:text="@tools:sample/lorem/random" />
 
 		<TextView
@@ -65,24 +54,11 @@
 			android:maxWidth="200dp"
 			android:maxLines="1"
 			android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-			app:layout_constraintBottom_toTopOf="@+id/region"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@+id/text_start"
-			app:layout_constraintTop_toBottomOf="@+id/currency"
-			tools:text="@tools:sample/lorem/random" />
-
-		<TextView
-			android:id="@+id/region"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:ellipsize="end"
-			android:maxWidth="200dp"
-			android:maxLines="1"
-			android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+			android:layout_marginBottom="@dimen/margin_small"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toEndOf="@+id/text_start"
-			app:layout_constraintTop_toBottomOf="@+id/capital"
+			app:layout_constraintTop_toBottomOf="@+id/name"
 			tools:text="@tools:sample/lorem/random" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,9 +19,7 @@ class CountryListItemHolder(
     fun bind(item: CountryListItem) = with(binding) {
         Timber.v("bind() called with $item")
         capital.text = item.capital
-        currency.text = item.currency
         name.text = item.name
-        region.text = item.region
         imageLoader.loadImage(flag, item.pngFlag)
         root.setOnClickListener {
             Timber.d("bind: on item clicked $item")
