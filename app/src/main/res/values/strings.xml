@@ -5,4 +5,6 @@
 	<string name="fmt_countries_list_content_description_progress">Loading progress indicator</string>
 	<string name="fmt_country_info_region">Region: %s</string>
 	<string name="fmt_country_info_population">Population: %s</string>
+	<string name="menu_search">Search</string>
+	<string name="searchable_hint_countries_name">Search country by name</string>
 </resources>

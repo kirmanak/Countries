@@ -14,8 +14,16 @@ class CountriesRepoRetrofitImpl @Inject constructor(
 
     override suspend fun getAllCountries(): List<CountryData> {
         Timber.v("getAllCountries() called")
-        val response = api.getAll(FIELDS.joinToString(","))
-        Timber.d("getAllCountries: received $response")
+        return mapCountryInfo(api.getAll(FIELDS))
+    }
+
+    override suspend fun searchByCountryName(name: String): List<CountryData> {
+        Timber.v("searchByCountryName() called with: name = $name")
+        return mapCountryInfo(api.getByName(name, FIELDS))
+    }
+
+    private fun mapCountryInfo(response: List<CountryModel>): List<CountryData> {
+        Timber.v("mapCountryInfo() called with: response = $response")
         return response.map { model ->
             val nativeOfficialNames = mutableMapOf<String, String>()
             val nativeCommonNames = mutableMapOf<String, String>()
@@ -73,6 +81,6 @@ class CountriesRepoRetrofitImpl @Inject constructor(
             "subregion",
             "languages",
             "startOfWeek"
-        )
+        ).joinToString(",")
     }
 }

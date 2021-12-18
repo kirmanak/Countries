@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -23,7 +23,7 @@ class CountriesListFragment : Fragment(R.layout.fmt_countries_list) {
 
     @Inject
     lateinit var adapter: CountriesListAdapter
-    private val viewModel: CountriesListViewModel by viewModels()
+    private val viewModel: CountriesListViewModel by activityViewModels()
     private val binding: FmtCountriesListBinding by viewBinding(FmtCountriesListBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +50,7 @@ class CountriesListFragment : Fragment(R.layout.fmt_countries_list) {
 
         retryButton.setOnClickListener {
             Timber.d("setUpViews: on retry click")
-            viewModel.requestCountries()
+            viewModel.tryAgainLastRequest()
         }
 
         viewModel.uiState.observe(viewLifecycleOwner) {

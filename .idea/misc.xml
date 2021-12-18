@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/ac_countries.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/fmt_countries_list.xml" value="0.24375124660983874" />
         <entry key="app/src/main/res/layout/fmt_country_info.xml" value="0.3640625" />
         <entry key="app/src/main/res/layout/vh_country.xml" value="0.3166364157194927" />
+        <entry key="app/src/main/res/menu/menu_countries.xml" value="0.19166666666666668" />
       </map>
     </option>
   </component>

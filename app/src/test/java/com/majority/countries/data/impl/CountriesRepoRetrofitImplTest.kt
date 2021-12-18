@@ -44,6 +44,31 @@ class CountriesRepoRetrofitImplTest : BaseTest() {
             mockWebServer.takeRequest().path
         )
     }
+
+    @Test
+    fun `when search successful then returns parsed info`() {
+        mockWebServer.alwaysRespondWith(testSuccessfulGetAllResponse())
+        val actual = runBlocking { subject.searchByCountryName("Sweden") }
+        val expected = testSuccessfulCountriesData()
+        assertEquals(expected, actual)
+    }
+
+    @Test(expected = HttpException::class)
+    fun `when search isn't successful then throws error`() {
+        mockWebServer.alwaysRespondWith(MockResponse().setResponseCode(404))
+        runBlocking { subject.searchByCountryName("Sweden") }
+    }
+
+    @Test
+    fun `when search by name requested then path is correct`() {
+        mockWebServer.alwaysRespondWith(testSuccessfulGetAllResponse())
+        val countryName = "Sweden"
+        runBlocking { subject.searchByCountryName(countryName) }
+        assertEquals(
+            "/v3.1/name/Sweden?fields=name%2Cindependent%2Cstatus%2CunMember%2Ccurrencies%2Ccapital%2Cpopulation%2Cflags%2Cregion%2Csubregion%2Clanguages%2CstartOfWeek",
+            mockWebServer.takeRequest().path
+        )
+    }
 }
 
 fun MockWebServer.alwaysRespondWith(mockResponse: MockResponse) {
