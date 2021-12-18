@@ -1,6 +1,7 @@
 package com.majority.countries.data
 
 data class CountryData(
+    val pngFlag: String?,
     val svgFlag: String?,
     val startOfWeek: String?,
     val commonName: String?,

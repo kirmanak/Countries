@@ -119,6 +119,7 @@ fun testSuccessfulGetAllResponse() = MockResponse()
 
 fun testSuccessfulCountriesData() = listOf(
     CountryData(
+        pngFlag = "https://flagcdn.com/w320/mt.png",
         svgFlag = null,
         startOfWeek = "monday",
         commonName = null,
@@ -144,6 +145,7 @@ fun testSuccessfulCountriesData() = listOf(
         population = 525285,
     ),
     CountryData(
+        pngFlag = "https://flagcdn.com/w320/se.png",
         svgFlag = "https://flagcdn.com/se.svg",
         startOfWeek = "monday",
         commonName = "Sweden",
@@ -161,6 +163,7 @@ fun testSuccessfulCountriesData() = listOf(
         population = 10353442,
     ),
     CountryData(
+        pngFlag = "https://flagcdn.com/w320/nc.png",
         svgFlag = "https://flagcdn.com/nc.svg",
         startOfWeek = "monday",
         commonName = "New Caledonia",
@@ -178,6 +181,7 @@ fun testSuccessfulCountriesData() = listOf(
         population = 271960,
     ),
     CountryData(
+        pngFlag = null,
         svgFlag = null,
         startOfWeek = null,
         commonName = null,

@@ -22,6 +22,7 @@ class CountriesRepoRetrofitImpl @Inject constructor(
             model.populateNameMaps(nativeCommonNames, nativeOfficialNames)
 
             CountryData(
+                pngFlag = model.flags.png,
                 svgFlag = model.flags.svg,
                 startOfWeek = model.startOfWeek,
                 commonName = model.name.common,

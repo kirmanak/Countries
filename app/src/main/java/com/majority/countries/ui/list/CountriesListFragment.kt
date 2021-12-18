@@ -9,13 +9,15 @@ import com.majority.countries.R
 import com.majority.countries.databinding.FmtCountriesListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CountriesListFragment : Fragment(R.layout.fmt_countries_list) {
 
+    @Inject
+    lateinit var adapter: CountriesListAdapter
     private val viewModel: CountriesListViewModel by viewModels()
     private val binding: FmtCountriesListBinding by viewBinding(FmtCountriesListBinding::bind)
-    private val adapter = CountriesListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
